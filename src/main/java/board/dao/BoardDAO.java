@@ -1,9 +1,10 @@
-package board.dao;
+ package board.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,32 +32,26 @@ public class BoardDAO {
 				instance=new BoardDAO();
 			}
 		}
-		
 		return instance;
 	}// 싱글톤
 	
 	
 	public BoardDAO() {
-
-		
 		try {
-			
 			Context ctx = new InitialContext();
-			ds = (DataSource) ctx.lookup("java:comp/env/jdbc/oracle");
+			ds = (DataSource) ctx.lookup("java:comp/env/jdbc/oracle");//java:comp/eve/ 라는 접두사가 무조건 들어가야 한다.
 		} catch (NamingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		
+		}		
 	}// BoardDAO() 
 	
 	
 	
-	public void write(BoardDTO boardDTO) {
+	public void boardwrite(BoardDTO boardDTO) {
 		
 		String sql = "insert into board(seq,id,name,email,subject,content,ref,logtime)"
-				+ " values(seq_board.nextval,?,?,?,?,?,seq_board.nextval,sysdate)";
-		
+				+ " values(seq_board.nextval,?,?,?,?,?,seq_board.currval,sysdate)";
 		
 		try {
 			conn=ds.getConnection();
@@ -67,7 +62,6 @@ public class BoardDAO {
 			pstmt.setString(3, boardDTO.getEmail());
 			pstmt.setString(4, boardDTO.getSubject());
 			pstmt.setString(5, boardDTO.getContent());
-			
 			pstmt.executeUpdate();//실행
 			
 		} catch (SQLException e) {
@@ -89,6 +83,7 @@ public class BoardDAO {
 	
 	public List<BoardDTO> printList(int startNum, int endNum){
 		List<BoardDTO> list= new ArrayList<BoardDTO>();
+	
 		String sql = "select * from("
 				+ "select rownum rn, tt.*from "
 				+ "(select seq,id,name,email,subject,content,ref,lev,step,pseq,reply,hit,"

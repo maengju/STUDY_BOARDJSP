@@ -15,9 +15,11 @@ div{
 	font-weight: bold;
 	
 }
+
+
+
 </style>
-<script type="text/javascript" src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="http://localhost:8080/boardJSP/js/board.js"></script>
+
 
 </head>
 <body>
@@ -46,7 +48,7 @@ div{
 	
 		<tr>
 			<td colspan="2" align="center">
-				<input type="button" value="글쓰기" id="writeBtn">
+				<input type="button" value="글쓰기" id="boardWriteBtn">
 				<input type="reset" value="다시작성">
 				<input type="button" value="글 목록" onclick="location.href='boardList.jsp?pg=1'">
 			</td>
@@ -72,7 +74,8 @@ div{
 
 
 </form>
-
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="http://localhost:8080/boardJSP/js/board.js"></script>
 
 
 

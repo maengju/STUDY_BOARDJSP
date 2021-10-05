@@ -10,9 +10,11 @@ List<BoardDTO> list= new ArrayList<BoardDTO>();
 
 request.setCharacterEncoding("UTF-8");
 int seq = Integer.parseInt(request.getParameter("seq"));
+int pg = Integer.parseInt(request.getParameter("pg"));
 
 BoardDAO boardDAO = BoardDAO.getInstance();
 list = boardDAO.view(seq);
+
 
 %>    
     
@@ -23,20 +25,20 @@ list = boardDAO.view(seq);
 <meta charset="UTF-8">
 <title>boardView</title>
 <style type="text/css">
-table{
+table {
 	border-bottom: 1px;
 	border-top: 1px;
-	
 }
 
-
-
-
+pre {
+	word-break : keep-all;
+	color : red;
+}
 </style>
 </head>
 <body>
 
-	<table rules="rows">
+	<table rules="rows" width = "300">
 		<tr>
 			<td colspan="3" align="center">
 				<h1><%=list.get(0).getSubject()%></h1>
@@ -56,9 +58,9 @@ table{
 			</td>
 		</tr>
 		
-		<tr height="200">
-			<td colspan="3" align="center">
-				<pre><%=list.get(0).getContent() %></pre>
+		<tr >
+			<td  width = "300" height="300" colspan="3" align="center" >
+				<pre class="content"><%=list.get(0).getContent() %></pre>
 			</td>
 		</tr>
 		
@@ -66,7 +68,7 @@ table{
 		<tr >
 			<td colspan="3" align="center">
 				<input type="button" value="글 쓰기" onclick="location.href='boardWriteForm.jsp'">
-				<input type="button" value="글 목록" onclick="location.href='boardList.jsp?pg=1'">
+				<input type="button" value="글 목록" onclick="location.href='boardList.jsp?pg=<%=pg%>'">
 
 			</td>
 		</tr>

@@ -13,6 +13,7 @@
 	String id = "maeng2594";
 	String email = "1188gur@naver.com";
 
+	
 	BoardDTO boardDTO = new BoardDTO();
 	
 	boardDTO.setId(id);
@@ -24,7 +25,7 @@
 
 	//DB
 	BoardDAO boardDAO = BoardDAO.getInstance();
-	boardDAO.write(boardDTO);
+	boardDAO.boardwrite(boardDTO);
 	
 	
 	

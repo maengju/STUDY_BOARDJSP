@@ -1,5 +1,5 @@
 $(function(){
-	$('#writeBtn').click(function(){
+	$('#boardWriteBtn').click(function(){
 		
 		$('#subjectDiv').empty();
 		$('#contentDiv').empty();

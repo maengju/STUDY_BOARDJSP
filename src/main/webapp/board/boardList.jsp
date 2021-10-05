@@ -58,10 +58,18 @@ table{
 	text-decoration: none;
 	color:black;
 }
-
+.subject:link{
+	color:black; text-decoration: none;
+}
+.subject:visited{
+	color:black; text-decoration: none;
+}
 .subject:hover{
 	color:green;
 	text-decoration: underline;
+}
+.subject:active{
+	color:black; text-decoration: none;
 }
 
 div{
@@ -91,18 +99,18 @@ div{
 			<td width="70" align="center">조회수</td>
 			<td width="150" align="center">작성일</td>
 		</tr>
+		<%if(list!=null){ %>
+			<%for(int i=0; i<list.size(); i++){ %>
+				<tr >
+					<td align="center"><%=list.get(i).getSeq() %></td>
+					<td align="center"><a href="boardView.jsp?seq=<%=list.get(i).getSeq()%>&pg=<%=pg %>"  class="subject" ><%=list.get(i).getSubject() %></a></td>
+					<td align="center"><%=list.get(i).getId() %></td>
+					<td align="center"><%=list.get(i).getHit() %></td>
+					<td align="center"><%=list.get(i).getLogtime() %></td>
 		
-		<%for(int i=0; i<list.size(); i++){ %>
-			<tr >
-				<td align="center"><%=list.get(i).getSeq() %></td>
-				<td align="center"><a href="boardView.jsp?seq=<%=list.get(i).getSeq()%>"  class="subject" ><%=list.get(i).getSubject() %></a></td>
-				<td align="center"><%=list.get(i).getId() %></td>
-				<td align="center"><%=list.get(i).getHit() %></td>
-				<td align="center"><%=list.get(i).getLogtime() %></td>
-	
-	
+		
+			<%} %>
 		<%} %>
-	
 	</table>
 
 	<div >
