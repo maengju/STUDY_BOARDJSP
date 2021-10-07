@@ -30,10 +30,7 @@ table {
 	border-top: 1px;
 }
 
-pre {
-	word-break : keep-all;
-	color : red;
-}
+
 </style>
 </head>
 <body>
@@ -60,7 +57,7 @@ pre {
 		
 		<tr >
 			<td  width = "300" height="300" colspan="3" align="center" >
-				<pre class="content"><%=list.get(0).getContent() %></pre>
+				<pre class="content"  style="white-space: pre-wrap;"><%=list.get(0).getContent() %></pre>
 			</td>
 		</tr>
 		
